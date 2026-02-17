@@ -135,7 +135,7 @@ public class IdentificadorController implements Initializable {
                 mostrarAlerta("Éxito", "Archivo guardado correctamente en " + archivoAbierto.getName());
             } catch (IOException e) {
                 mostrarAlerta("Error", "No se pudo guardar el archivo: " + e.getMessage());
-                e.printStackTrace();
+                e.getMessage();
             }
         } else {
             mostrarAlerta("Aviso", "No hay ningún archivo abierto para guardar.");
@@ -214,7 +214,7 @@ public class IdentificadorController implements Initializable {
     }
 
     @FXML
-    void validarIdentificador(ActionEvent event) {
+    void validarIdentificador(ActionEvent event){
         String texto = txtAreaContenido.getText();
 
         if (texto == null || texto.trim().isEmpty()) {
@@ -222,46 +222,47 @@ public class IdentificadorController implements Initializable {
             return;
         }
 
-        //separamos el texto usando espacios o saltos de línea como delimitador, "\\s+" significa "uno o más espacios, tabuladores o saltos de línea"
+        //separamos el texto usando espacios o saltos de línea como delimitador, \\s+ significa uno o más espacios, tabuladores o saltos de línea
+        //StringBuilder es mutable, String es inmutable. Nos ayauda con el metodo append, para hacer cadenas modificables
         String[] palabras = texto.split("\\s+");
         StringBuilder resultados = new StringBuilder();
 
         for (String palabra : palabras) {
-            if (!palabra.isEmpty()) {
-                boolean esValido = identificadorValido(palabra);
-
-                if (esValido) {
+            try{
+                if (!palabra.isEmpty()) {
+                    identificadorValido(palabra);
                     resultados.append(palabra).append(" ----------> [VALIDO]\n");
-                } else {
-                    resultados.append(palabra).append(" ----------> [INVALIDO]\n");
                 }
+            }catch (Exception exception){
+                resultados.append(palabra).append(" ----------> [INVALIDO]\n");
             }
         }
         txtAreaResultado.setText(resultados.toString());
     }
 
-    private boolean identificadorValido(String cadena) {
-        int estado = 1;
-        for (int i = 0; i < cadena.length(); i++) {
-            char simbolo = cadena.charAt(i);
+    private boolean identificadorValido(String cadena) throws Exception {
+        int estado = 0;
+        int contador = 0;
+
+        while (contador < cadena.length()) {
+            char simbolo = cadena.charAt(contador);
             switch (estado) {
-                case 1:
-                    if (Character.isLetter(simbolo)) estado = 3;
-                    else if (Character.isDigit(simbolo)) estado = 2;
-                    else estado = -1;
+                case 0:
+                    estado = (Character.isLetter(simbolo)) ? 2 : (Character.isDigit(simbolo)) ? 1 : -1;
                     break;
-                case 2:
+                case 1:
                     estado = -1;
                     break;
-                case 3:
-                    if (Character.isLetter(simbolo) || Character.isDigit(simbolo)) estado = 3;
-                    else estado = -1;
+                case 2:
+                    estado = (Character.isLetter(simbolo) || Character.isDigit(simbolo)) ? 2 : -1;
                     break;
                 case -1:
-                    break;
+                    throw new Exception("Estado no valido");
             }
+            contador++;
         }
-        return estado == 3;
+        if (estado == 2) return true;
+        else throw new Exception("Estado no valido");
     }
 
     private void leerContenidoArchivo(File archivo) {
@@ -271,7 +272,7 @@ public class IdentificadorController implements Initializable {
             txtAreaContenido.setText(contenido);
         } catch (IOException e) {
             txtAreaContenido.setText("Error al leer el archivo: " + e.getMessage());
-            e.printStackTrace();
+            e.getMessage();
         }
     }
 
