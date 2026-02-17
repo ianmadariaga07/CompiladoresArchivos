@@ -12,7 +12,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.DirectoryChooser;
 
-
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;

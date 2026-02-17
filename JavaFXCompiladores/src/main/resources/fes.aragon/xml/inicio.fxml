@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane fx:id="btnPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="893.0" prefWidth="1168.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fes.aragon.controller.InicioController">
+   <left>
+      <ToolBar orientation="VERTICAL" prefHeight="400.0" prefWidth="204.0" style="-fx-background-color: #022448;" BorderPane.alignment="CENTER">
+        <items>
+          <Button fx:id="btnArchivo" mnemonicParsing="false" onAction="#abrirArchivo" prefHeight="30.0" prefWidth="198.0" styleClass="alert-success" text="ARCHIVOS" />
+            <Button fx:id="btnLectura" mnemonicParsing="false" onAction="#abrirLectura" prefHeight="32.0" prefWidth="198.0" text="LECTURA" />
+            <Button fx:id="btnIdentificador" mnemonicParsing="false" onAction="#accionIdentificador" prefHeight="34.0" prefWidth="198.0" text="IDENTIFICADOR" />
+        </items>
+      </ToolBar>
+   </left>
+</BorderPane>

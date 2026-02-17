@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="903.0" prefWidth="916.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fes.aragon.controller.IdentificadorController">
+   <children>
+      <Button fx:id="idAbrir" layoutX="28.0" layoutY="146.0" mnemonicParsing="false" onAction="#accionAbrirArchivo" prefHeight="48.0" prefWidth="121.0" text="Abrir Archivo" textFill="#007df2" />
+      <Label fx:id="lblNota" layoutX="27.0" layoutY="68.0" prefHeight="18.0" prefWidth="672.0" text="NOTA: Solamente se admiten archivos con las siguientes extenciones: .txt, .java, .cpp, .c, .xml" />
+      <Button fx:id="idLimpiar" layoutX="544.0" layoutY="146.0" mnemonicParsing="false" onAction="#limpiarAreaTexto" prefHeight="48.0" prefWidth="121.0" text="Limpiar" />
+      <Label fx:id="lblEstado" layoutX="10.0" layoutY="880.0" prefHeight="18.0" prefWidth="897.0" text="//" />
+      <Button fx:id="idQuitar" layoutX="670.0" layoutY="146.0" mnemonicParsing="false" onAction="#quitarArchivo" prefHeight="48.0" prefWidth="121.0" text="Quitar Archivo" />
+      <Button fx:id="idCrearArchivo" layoutX="160.0" layoutY="146.0" mnemonicParsing="false" onAction="#crearArchivo" prefHeight="48.0" prefWidth="121.0" text="Crear Archivo" textFill="#007df2" />
+      <Label fx:id="lblNota1" layoutX="27.0" layoutY="14.0" prefHeight="18.0" prefWidth="672.0" text="COMPILADORES" />
+      <Label fx:id="lblNota11" layoutX="27.0" layoutY="32.0" prefHeight="18.0" prefWidth="672.0" text="CASTRO CRUZ ARIADNA MICHELLE" />
+      <Label fx:id="lblNota111" layoutX="27.0" layoutY="50.0" prefHeight="18.0" prefWidth="672.0" text="TRANQUILINO MADARIAGA IAN ALEXANDER" />
+      <Button fx:id="idValidar" layoutX="717.0" layoutY="29.0" mnemonicParsing="false" onAction="#validarIdentificador" prefHeight="79.0" prefWidth="174.0" text="VALIDAR" />
+      <Label layoutX="28.0" layoutY="393.0" prefHeight="18.0" prefWidth="370.0" text="RESULTADOS: " />
+      <TextArea fx:id="txtAreaContenido" layoutX="27.0" layoutY="209.0" prefHeight="174.0" prefWidth="863.0" />
+      <Label layoutX="27.0" layoutY="117.0" prefHeight="18.0" prefWidth="672.0" text="CARGA UN ARCHIVO O ESCRIBE LAS PALABRAS A VALIDAR" />
+      <Button fx:id="idEliminar" layoutX="797.0" layoutY="146.0" mnemonicParsing="false" onAction="#eliminarArchivo" prefHeight="48.0" prefWidth="93.0" text="ELIMINAR" textFill="RED" />
+      <Button fx:id="idGuardar" layoutX="288.0" layoutY="146.0" mnemonicParsing="false" onAction="#guardarEdicionArchivo" prefHeight="48.0" prefWidth="121.0" text="Guardar Edicion" textFill="#45b207" />
+      <Button fx:id="idGuardarComo" layoutX="417.0" layoutY="146.0" mnemonicParsing="false" onAction="#guardarArchivoComo" prefHeight="48.0" prefWidth="121.0" text="Guardar Como" textFill="#45b207" />
+      <Label layoutX="27.0" layoutY="86.0" prefHeight="18.0" prefWidth="640.0" text="DEBES DE SEPARAR LAS PALABRAS CON UN SALTO DE LINEA" />
+      <TextArea fx:id="txtAreaResultado" layoutX="27.0" layoutY="420.0" prefHeight="456.0" prefWidth="863.0" />
+   </children>
+</AnchorPane>
