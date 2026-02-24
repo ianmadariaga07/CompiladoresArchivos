@@ -14,7 +14,7 @@
         <Label fx:id="lblEstado" layoutX="14.0" layoutY="800.0" prefHeight="18.0" prefWidth="897.0" text="//" />
         <Button fx:id="idQuitar" layoutX="726.0" layoutY="146.0" mnemonicParsing="false" onAction="#quitarArchivo" prefHeight="48.0" prefWidth="121.0" text="Quitar Archivo" />
         <Button fx:id="idCrearArchivo" layoutX="160.0" layoutY="146.0" mnemonicParsing="false" onAction="#crearArchivo" prefHeight="48.0" prefWidth="121.0" text="Crear Archivo" textFill="#007df2" />
-        <Label fx:id="lblNota1" layoutX="27.0" layoutY="14.0" prefHeight="18.0" prefWidth="672.0" text="COMPILADORES - V3">
+        <Label fx:id="lblNota1" layoutX="27.0" layoutY="14.0" prefHeight="18.0" prefWidth="672.0" text="COMPILADORES - ceros">
             <font>
                 <Font size="21.0" />
             </font></Label>

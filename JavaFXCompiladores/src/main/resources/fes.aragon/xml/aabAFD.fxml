@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="850.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fes.aragon.controller.cerosAFDV3Controller">
+<AnchorPane prefHeight="850.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fes.aragon.controller.aabAFDController">
     <children>
         <Button fx:id="idAbrir" layoutX="28.0" layoutY="146.0" mnemonicParsing="false" onAction="#accionAbrirArchivo" prefHeight="48.0" prefWidth="121.0" text="Abrir Archivo" textFill="#007df2" />
         <Label fx:id="lblNota" layoutX="27.0" layoutY="81.0" prefHeight="18.0" prefWidth="672.0" text="NOTA: Solamente se admiten archivos con las siguientes extenciones: .txt, .java, .cpp, .c, .xml" />
@@ -14,10 +14,10 @@
         <Label fx:id="lblEstado" layoutX="14.0" layoutY="800.0" prefHeight="18.0" prefWidth="897.0" text="//" />
         <Button fx:id="idQuitar" layoutX="726.0" layoutY="146.0" mnemonicParsing="false" onAction="#quitarArchivo" prefHeight="48.0" prefWidth="121.0" text="Quitar Archivo" />
         <Button fx:id="idCrearArchivo" layoutX="160.0" layoutY="146.0" mnemonicParsing="false" onAction="#crearArchivo" prefHeight="48.0" prefWidth="121.0" text="Crear Archivo" textFill="#007df2" />
-        <Label fx:id="lblNota1" layoutX="27.0" layoutY="14.0" prefHeight="18.0" prefWidth="672.0" text="COMPILADORES - ceros V3">
-         <font>
-            <Font size="21.0" />
-         </font></Label>
+        <Label fx:id="lblNota1" layoutX="27.0" layoutY="14.0" prefHeight="18.0" prefWidth="672.0" text="COMPILADORES - {a,b}">
+            <font>
+                <Font size="21.0" />
+            </font></Label>
         <Label fx:id="lblNota11" layoutX="27.0" layoutY="45.0" prefHeight="18.0" prefWidth="672.0" text="CASTRO CRUZ ARIADNA MICHELLE" />
         <Label fx:id="lblNota111" layoutX="27.0" layoutY="63.0" prefHeight="18.0" prefWidth="672.0" text="TRANQUILINO MADARIAGA IAN ALEXANDER" />
         <Button fx:id="idValidar" layoutX="826.0" layoutY="20.0" mnemonicParsing="false" onAction="#validarIdentificadorCeros" prefHeight="79.0" prefWidth="175.0" text="VALIDAR" />
@@ -27,10 +27,10 @@
         <Button fx:id="idEliminar" layoutX="880.0" layoutY="146.0" mnemonicParsing="false" onAction="#eliminarArchivo" prefHeight="48.0" prefWidth="121.0" text="ELIMINAR" textFill="RED" />
         <Button fx:id="idGuardar" layoutX="309.0" layoutY="146.0" mnemonicParsing="false" onAction="#guardarEdicionArchivo" prefHeight="48.0" prefWidth="121.0" text="Guardar Edicion" textFill="#45b207" />
         <Button fx:id="idGuardarComo" layoutX="441.0" layoutY="146.0" mnemonicParsing="false" onAction="#guardarArchivoComo" prefHeight="48.0" prefWidth="121.0" text="Guardar Como" textFill="#45b207" />
-        <Label layoutX="27.0" layoutY="99.0" prefHeight="24.0" prefWidth="755.0" text="SOLAMENTE DEBES DE INGRESAR '0' Y '1' PARA QUE LA VALIDACION SEA CORRECTA">
-         <font>
-            <Font size="17.0" />
-         </font></Label>
+        <Label layoutX="27.0" layoutY="99.0" prefHeight="24.0" prefWidth="755.0" text="SOLAMENTE DEBES DE INGRESAR 'a' Y 'b' PARA QUE LA VALIDACION SEA CORRECTA">
+            <font>
+                <Font size="17.0" />
+            </font></Label>
         <TextArea fx:id="txtAreaResultado" layoutX="27.0" layoutY="420.0" prefHeight="380.0" prefWidth="974.0" />
     </children>
 </AnchorPane>
