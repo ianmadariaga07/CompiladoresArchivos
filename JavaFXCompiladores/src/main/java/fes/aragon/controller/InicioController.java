@@ -15,24 +15,46 @@ public class InicioController {
     private Button btnIdentificador;
 
     @FXML
+    private Button btnIdentificador3;
+
+    @FXML
+    private Button btnCeros;
+
+    @FXML
+    private Button btnCerosV3;
+
+    @FXML
+    private Button btnAB;
+
+    @FXML
     private Button btnLectura;
     @FXML
     private BorderPane btnPrincipal;
 
-    @FXML
-    void abrirArchivo(ActionEvent event) {
-        ventana("/fes.aragon/xml/archivo.fxml");
-    }
+    //@FXML
+    //void abrirArchivo(ActionEvent event) {ventana("/fes.aragon/xml/archivo.fxml");}
+
+    //@FXML
+    //void abrirLectura(ActionEvent event) {ventana("/fes.aragon/xml/lecturaArchivo.fxml");}
 
     @FXML
-    void abrirLectura(ActionEvent event) {
-        ventana("/fes.aragon/xml/lecturaArchivo.fxml");
-    }
-
-    @FXML
-    void accionIdentificador(ActionEvent event) {
+    void abrirIdentificador(ActionEvent event) {
         ventana("/fes.aragon/xml/identificador.fxml");
     }
+
+    @FXML
+    void abrirIdentificador3(ActionEvent event) {
+        ventana("/fes.aragon/xml/identificadorV3.fxml");
+    }
+
+    @FXML
+    void abrirCeros(ActionEvent event) {ventana("/fes.aragon/xml/cerosAFD.fxml");}
+
+    @FXML
+    void abrirCerosV3(ActionEvent event) {ventana("/fes.aragon/xml/cerosAFDV3.fxml");}
+
+    @FXML
+    void abrirAB(ActionEvent event) {ventana("/fes.aragon/xml/aabAFD.fxml");}
 
     private void ventana(String ruta){
         try {
@@ -43,5 +65,4 @@ public class InicioController {
         }
 
     }
-
 }

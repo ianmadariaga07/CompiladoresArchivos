@@ -4,14 +4,16 @@
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane fx:id="btnPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="893.0" prefWidth="1168.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fes.aragon.controller.InicioController">
-   <left>
-      <ToolBar orientation="VERTICAL" prefHeight="400.0" prefWidth="204.0" style="-fx-background-color: #022448;" BorderPane.alignment="CENTER">
-        <items>
-          <Button fx:id="btnArchivo" mnemonicParsing="false" onAction="#abrirArchivo" prefHeight="30.0" prefWidth="198.0" styleClass="alert-success" text="ARCHIVOS" />
-            <Button fx:id="btnLectura" mnemonicParsing="false" onAction="#abrirLectura" prefHeight="32.0" prefWidth="198.0" text="LECTURA" />
-            <Button fx:id="btnIdentificador" mnemonicParsing="false" onAction="#accionIdentificador" prefHeight="34.0" prefWidth="198.0" text="IDENTIFICADOR" />
-        </items>
+<BorderPane fx:id="btnPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="893.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fes.aragon.controller.InicioController">
+   <top>
+      <ToolBar prefHeight="58.0" prefWidth="1168.0" style="-fx-background-color: #022448;" BorderPane.alignment="CENTER">
+         <items>
+            <Button fx:id="btnAB" mnemonicParsing="false" onAction="#abrirAB" prefHeight="42.0" prefWidth="141.0" text="AB " />
+            <Button fx:id="btnCeros" mnemonicParsing="false" onAction="#abrirCeros" prefHeight="42.0" prefWidth="141.0" text="CEROS V1" />
+            <Button fx:id="btnCerosV3" mnemonicParsing="false" onAction="#abrirCerosV3" prefHeight="42.0" prefWidth="141.0" text="CEROS V3" />
+            <Button fx:id="btnIdentificador" mnemonicParsing="false" onAction="#abrirIdentificador" prefHeight="42.0" prefWidth="140.0" text="IDENTIFICADOR V1" />
+            <Button fx:id="btnIdentificador3" mnemonicParsing="false" onAction="#abrirIdentificador3" prefHeight="42.0" prefWidth="140.0" text="IDENTIFICADOR V3" />
+         </items>
       </ToolBar>
-   </left>
+   </top>
 </BorderPane>

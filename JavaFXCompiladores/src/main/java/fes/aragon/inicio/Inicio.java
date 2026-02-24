@@ -11,7 +11,7 @@ import java.io.IOException;
 public class Inicio extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Inicio.class.getResource("/fes.aragon/xml/identificador.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Inicio.class.getResource("/fes.aragon/xml/inicio.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("COMPILADORES");
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
