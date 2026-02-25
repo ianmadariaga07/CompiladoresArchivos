@@ -1,4 +1,4 @@
-package fes.aragon.modelo;
+package fes.aragon.extra;
 
 public class Archivos {
     String ruta;

@@ -1,5 +1,7 @@
 package fes.aragon.controller;
 
+import fes.aragon.extra.ExpresionRegularApoyo;
+import fes.aragon.modelo.ExpresionRegularV2;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -260,7 +262,7 @@ public class InicioController implements Initializable {
                         case "SUBCADENA AA v3":
                             identificadorSubcadenaAA(palabra);
                             break;
-                        case "[( 0* 1 | 1* ) 0 1 ] v2":
+                        case "EXPRESIONES REGULARES":
                             identificadorExpresionRegularV2(palabra);
                             break;
                         default:
@@ -357,7 +359,8 @@ public class InicioController implements Initializable {
     }
 
     private void identificadorExpresionRegularV2(String cadena) throws Exception {
-
+        ExpresionRegularV2 validador = new ExpresionRegularV2(cadena);
+        validador.validar();
     }
 
     private void identificadorVariablesV1(String cadena) throws Exception {
@@ -471,3 +474,4 @@ public class InicioController implements Initializable {
     }
 
 }
+

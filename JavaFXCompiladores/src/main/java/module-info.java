@@ -13,4 +13,6 @@ module fes.aragon.javafxcompiladores {
     opens fes.aragon.inicio to javafx.fxml;
     exports fes.aragon.modelo;
     opens fes.aragon.modelo to javafx.fxml;
+    exports fes.aragon.extra;
+    opens fes.aragon.extra to javafx.fxml;
 }
