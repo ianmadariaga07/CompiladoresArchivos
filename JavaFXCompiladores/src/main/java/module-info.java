@@ -3,6 +3,7 @@ module fes.aragon.javafxcompiladores {
     requires javafx.fxml;
 
     requires org.kordamp.bootstrapfx.core;
+    requires javafx.graphics;
 
     exports fes.aragon.controller;
     opens fes.aragon.controller to javafx.fxml;

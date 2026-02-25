@@ -1,0 +1,77 @@
+/* ==================================================================
+   ESTILOS PARA LOS TOGGLE BUTTONS (Tus botones de autómatas)
+   ================================================================== */
+
+/* 1. ESTADO NORMAL (Como se ven cuando NO están seleccionados) */
+.toggle-button {
+    /* Usé el color base que vi en tu imagen #6C739E */
+    -fx-background-color: #6C7393;
+    -fx-text-fill: #F0F1F4;
+    -fx-background-radius: 5px; /* Bordes ligeramente redondeados */
+    -fx-border-width: 0px; /* Sin borde en estado normal */
+    transition: all 0.3s ease; /* (Opcional) Suaviza los cambios de color */
+}
+
+/* 2. ESTADO HOVER (Cuando pasas el mouse por encima) */
+.toggle-button:hover {
+    -fx-background-color: #A1A6BA; /* Un tono un poco más claro para que reaccione */
+    -fx-cursor: hand;
+}
+
+/* 3. ESTADO SELECCIONADO (¡Aquí está la magia que pides!) */
+.toggle-button:selected {
+    /* CAMBIO DE FONDO: Un verde neón intenso */
+    -fx-background-color: #00FF55 !important;
+
+    /* CAMBIO DE TEXTO: Negro para que contraste con el neón */
+    -fx-text-fill: #20222B !important;
+    -fx-font-weight: bold;
+
+    /* CONTORNO BRILLANTE (GLOW) */
+    /* Un borde cian/azul eléctrico grueso */
+    /*-fx-border-color: #323543;*/
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+
+    /* Efecto de resplandor externo (sombra de luz) */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 255, 85, 0.8), 15, 0.5, 0, 0);
+}
+
+/* ==================================================================
+   ESTILOS PARA LOS BOTONES NORMALES (Sección de Edición)
+   ================================================================== */
+.button {
+    -fx-background-color: #D6D8E1; /* Mismo azul/gris de los otros botones */
+    -fx-text-fill: #F0F1F4;
+    -fx-background-radius: 5px; /* Mismo redondeo */
+    -fx-cursor: hand; /* Aparece la manita */
+    -fx-padding: 8px 15px; /* Un poco de espacio interno para que respiren */
+    transition: all 0.2s;
+}
+
+/* Efecto al pasar el mouse por los botones de edición */
+.button:hover {
+    -fx-background-color: #878DA6;
+}
+
+/* Efecto al dar clic (presionar) */
+.button:pressed {
+    -fx-background-color: #454A5E; /* Se oscurece un poco al dar clic */
+}
+
+/* ==================================================================
+   ESTILO ESPECIAL PARA EL BOTÓN "VALIDAR"
+   ================================================================== */
+.btn-validar {
+    -fx-background-color: #D6D8E1; /* Un gris muy clarito para que resalte */
+    -fx-text-fill: #20222B; /* Letra oscura */
+    -fx-font-weight: bold;
+    -fx-font-size: 16px; /* Letra un poco más grande */
+    -fx-background-radius: 8px; /* Un poco más redondo que los demás */
+    -fx-cursor: hand;
+}
+
+
+.btn-validar:hover {
+    -fx-background-color: #F0F1F4;
+}
