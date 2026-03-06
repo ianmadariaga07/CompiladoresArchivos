@@ -92,7 +92,7 @@
                   <Font size="14.0" />
                </font>
             </ToggleButton>
-            <ToggleButton layoutX="936.0" layoutY="144.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="120.0" stylesheets="@../css/style.css" text="AB JFLEX" toggleGroup="$grupoAFD">
+            <ToggleButton layoutX="936.0" layoutY="144.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="120.0" stylesheets="@../css/style.css" text="AB AUTO" toggleGroup="$grupoAFD">
                <font>
                   <Font size="14.0" />
                </font>
