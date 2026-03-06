@@ -250,20 +250,26 @@ public class InicioController implements Initializable {
                         case "CEROS v1":
                             identificadorCerosV1(palabra);
                             break;
+                        case "AA v3":
+                            identificadorSubcadenaAA(palabra);
+                            break;
+                        case "ID v1":
+                            identificadorVariablesV1(palabra);
+                            break;
+                        case "ID v3":
+                            identificadorVariablesV3(palabra);
+                            break;
                         case "CEROS v3":
                             identificadorCerosV3(palabra);
                             break;
-                        case "ID VARIABLES v1":
-                            identificadorVariablesV1(palabra);
-                            break;
-                        case "ID VARIABLES v3":
-                            identificadorVariablesV3(palabra);
-                            break;
-                        case "SUBCADENA AA v3":
-                            identificadorSubcadenaAA(palabra);
-                            break;
-                        case "EXPRESIONES REGULARES":
+                        case "EXP REG":
                             identificadorExpresionRegularV2(palabra);
+                            break;
+                        case "NOTA CIENT.":
+                            identificadorNotacionCientifica(palabra);
+                            break;
+                        case "AB JFLEX":
+                            identificadorJFlex(palabra);
                             break;
                         default:
                             throw new Exception("Opción no reconocida");
@@ -320,17 +326,14 @@ public class InicioController implements Initializable {
         }
     }
 
-    private void identificadorCerosV3(String cadena) throws Exception {
+    private void identificadorSubcadenaAA(String cadena) throws Exception {
         int estado = 0;
         int contador = 0;
         int entrada = 0;
         int[][] tabla = {
-                {1, 5, 0}, //q0
-                {2, 5, 0}, //q1
-                {2, 3,-1}, //q2 aceptacion
-                {4, 3, 0}, //q3
-                {2, 3, 0}, //q4
-                {5, 5, 0}  //qm muerto
+                {1, 0, 0},//q0
+                {2, 0, 0},//q1
+                {2, 2,-1} //q2 aceptacion
         };
 
         do {
@@ -338,29 +341,20 @@ public class InicioController implements Initializable {
                 entrada = 2; //fin de cadena
             } else {
                 char simbolo = cadena.charAt(contador);
-                if (simbolo == '0') {
+                if (simbolo == 'a') {
                     entrada = 0;
-                } else if (simbolo == '1') {
+                } else if (simbolo == 'b') {
                     entrada = 1;
                 } else {
-                    throw new Exception("Error: El alfabeto solo permite 0 y 1. Simbolo invalido:  " + simbolo);
-                }
-            } contador++;
+                    throw new Exception("Error: El alfabeto solo permite a y b. Simbolo invalido:  " + simbolo);
+                } contador++;
+            }
             estado = tabla[estado][entrada];
 
-            if (estado == 5) {
-                throw new Exception("Error, la cadena no empieza con 00");
-            }
-
-            if (entrada == 2 && estado == 0) {
-                throw new Exception("Error: La cadena no termina con '00'.");
+            if (entrada == 2 && (estado == 0 || estado == 1)) {
+                throw new Exception("Error: La cadena no encuentra 'aa'");
             }
         } while (estado != tabla[2][2]);
-    }
-
-    private void identificadorExpresionRegularV2(String cadena) throws Exception {
-        ExpresionRegularV2 validador = new ExpresionRegularV2(cadena);
-        validador.validar();
     }
 
     private void identificadorVariablesV1(String cadena) throws Exception {
@@ -415,14 +409,17 @@ public class InicioController implements Initializable {
         } while (estado != tabla[2][2]);
     }
 
-    private void identificadorSubcadenaAA(String cadena) throws Exception {
+    private void identificadorCerosV3(String cadena) throws Exception {
         int estado = 0;
         int contador = 0;
         int entrada = 0;
         int[][] tabla = {
-                {1, 0, 0},//q0
-                {2, 0, 0},//q1
-                {2, 2,-1} //q2 aceptacion
+                {1, 5, 0}, //q0
+                {2, 5, 0}, //q1
+                {2, 3,-1}, //q2 aceptacion
+                {4, 3, 0}, //q3
+                {2, 3, 0}, //q4
+                {5, 5, 0}  //qm muerto
         };
 
         do {
@@ -430,20 +427,81 @@ public class InicioController implements Initializable {
                 entrada = 2; //fin de cadena
             } else {
                 char simbolo = cadena.charAt(contador);
-                if (simbolo == 'a') {
+                if (simbolo == '0') {
                     entrada = 0;
-                } else if (simbolo == 'b') {
+                } else if (simbolo == '1') {
                     entrada = 1;
                 } else {
-                    throw new Exception("Error: El alfabeto solo permite a y b. Simbolo invalido:  " + simbolo);
-                } contador++;
-            }
+                    throw new Exception("Error: El alfabeto solo permite 0 y 1. Simbolo invalido:  " + simbolo);
+                }
+            } contador++;
             estado = tabla[estado][entrada];
 
-            if (entrada == 2 && (estado == 0 || estado == 1)) {
-                throw new Exception("Error: La cadena no encuentra 'aa'");
+            if (estado == 5) {
+                throw new Exception("Error, la cadena no empieza con 00");
+            }
+
+            if (entrada == 2 && estado == 0) {
+                throw new Exception("Error: La cadena no termina con '00'.");
             }
         } while (estado != tabla[2][2]);
+    }
+
+    private void identificadorExpresionRegularV2(String cadena) throws Exception {
+        ExpresionRegularV2 validador = new ExpresionRegularV2(cadena);
+        validador.validar();
+    }
+
+    private void identificadorNotacionCientifica(String cadena) throws Exception {
+        int estado = 0;
+        int contador = 0;
+        int entrada = 0;
+        int[][] tabla = {
+                {1, 7, 7, 7, 0}, //q0
+                {1, 2, 4, 7, 0}, //q1
+                {3, 7, 7, 7, 0}, //q2
+                {3, 7, 4, 7,-1}, //q3 aceptacion
+                {6, 7, 7, 5, 0}, //q4
+                {6, 7, 7, 7, 0}, //q5
+                {6, 7, 7, 7,-1}, //q6 aceptacion
+                {7, 7, 7, 7, 0}  //q7 muerto
+        };
+
+        do{
+            if(contador == cadena.length()) {
+                entrada = 4; //fin de cadena
+            }else{
+                char simbolo = cadena.charAt(contador);
+
+                if (Character.isDigit(simbolo)) {
+                    entrada = 0;
+                } else if (simbolo == '.') {
+                    entrada = 1;
+                } else if (simbolo == 'e') {
+                    entrada = 2;
+                } else if (simbolo == '+' || simbolo == '-') {
+                    entrada = 3;
+                } else {
+                    throw new Exception("Error: Símbolo ajeno al alfabeto: " + simbolo);
+                }
+            }
+
+            estado = tabla[estado][entrada];
+
+            if(estado == 7 && entrada != 4){
+                throw new Exception("Error: La cadena rompio la estructura y cayo en el estado pozo");
+            }
+
+            if(estado != -1 && entrada == 4){
+                throw new Exception("Error: La cadena quedo incompleta");
+            }
+            contador++;
+
+        } while (estado != tabla[3][4] || estado != tabla[6][4]);
+    }
+
+    private void identificadorJFlex(String cadena) throws Exception {
+
     }
 
     private void leerContenidoArchivo(File archivo) {
