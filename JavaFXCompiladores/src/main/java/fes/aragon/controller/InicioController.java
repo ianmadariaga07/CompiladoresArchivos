@@ -178,7 +178,8 @@ public class InicioController implements Initializable {
     private void identificadorAutoconfigurable(String cadena) throws Exception{
         if(automataConfigurable.isConfigurado()) {
             automataConfigurable.validar(cadena);
-        } else {
+        }else{
+            mostrarAlerta("ERROR: ","El automata no esta configurado");
             throw new Exception("");
         }
     }

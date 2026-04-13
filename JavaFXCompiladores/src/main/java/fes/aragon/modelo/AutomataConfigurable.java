@@ -12,7 +12,11 @@ public class AutomataConfigurable {
 
     public AutomataConfigurable(){}
 
-    public void cargarConfiguracion(String texto){
+    public boolean isConfigurado(){
+        return configurado;
+    }
+
+    public void cargarConfiguracion(String texto) throws Exception {
         String[] lineas = texto.split("\n");
         String[] dimensiones = lineas[0].split(",");
 
@@ -32,6 +36,10 @@ public class AutomataConfigurable {
         for(int i = 2; i < lineas.length; i++){
             int filaMatriz = i - 2;
             String[] valoresRenglon = lineas[i].split(",");
+
+            if(valoresRenglon.length < columnas + 1){
+                throw new Exception("Faltan datos en las filas");
+            }
 
             for(int j = 0; j < columnas; j++){
                 matriz[filaMatriz][j] = Integer.parseInt(valoresRenglon[j].trim());
@@ -62,9 +70,5 @@ public class AutomataConfigurable {
         if (!estado[estadoActual]){
             throw new Exception("Cadena invalida: El automata no termino en un estado de aceptacion");
         }
-    }
-
-    public boolean isConfigurado(){
-        return configurado;
     }
 }
