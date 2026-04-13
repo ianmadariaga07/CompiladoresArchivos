@@ -25,6 +25,9 @@ public class InicioController implements Initializable {
     private ToggleGroup grupoAFD;
 
     @FXML
+    private Button idCargarAuto;
+
+    @FXML
     private Button idAbrir;
 
     @FXML
@@ -56,21 +59,33 @@ public class InicioController implements Initializable {
 
     private File archivoAbierto;
 
+    private AutomataConfigurable automataConfigurable = new AutomataConfigurable();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         configurarBotones(false);
+        idCargarAuto.setDisable(true);
+
+        grupoAFD.selectedToggleProperty().addListener((observable, viejoToggle, nuevoToggle) -> {
+            if (nuevoToggle != null) {
+                ToggleButton botonSeleccionado = (ToggleButton) nuevoToggle;
+                if (!botonSeleccionado.getText().equals("AB AUTO")) {
+                    idCargarAuto.setDisable(true);
+                }
+            }
+        });
     }
 
     @FXML
     void accionIdentificador(ActionEvent event){
         String texto = txtAreaContenido.getText();
+        Toggle toggle = grupoAFD.getSelectedToggle();
 
         if(texto == null || texto.trim().isEmpty()){
             mostrarAlerta("Aviso", "No hay texto para validar. Escribe algo o carga un archivo");
             return;
         }
 
-        Toggle toggle = grupoAFD.getSelectedToggle();
         if(toggle == null){
             mostrarAlerta("Aviso", "Debes seleccionar un tipo de autómata (AFD) antes de validar");
             return;
@@ -161,7 +176,42 @@ public class InicioController implements Initializable {
     }
 
     private void identificadorAutoconfigurable(String cadena) throws Exception{
+        if(automataConfigurable.isConfigurado()) {
+            automataConfigurable.validar(cadena);
+        } else {
+            throw new Exception("");
+        }
+    }
 
+    @FXML
+    void accionSeleccionarAutoconfi(ActionEvent event) {
+        idCargarAuto.setDisable(false);
+
+        mostrarAlerta(
+                "Instrucciones Autoconfigurable",
+                "Formato de la Matriz de Transiciones:\n\n" +
+                        "Fila 1: [Núm. Estados],[Núm. Columnas]\n" +
+                        "Fila 2: [Alfabeto separado por comas, ej: a,b,er]\n" +
+                        "Fila 3 en adelante: [Estado Destino 1],[Estado Destino 2],[Es Final? 0 o 1]\n\n" +
+                        "Una vez escrito, presiona el botón 'Cargar Config.' para guardarlo en memoria."
+        );
+    }
+
+    @FXML
+    void accionCargarAuto(ActionEvent event){
+        String texto = txtAreaContenido.getText();
+
+        if(texto == null || texto.trim().isEmpty()){
+            mostrarAlerta("Aviso", "No hay texto para cargar. Escribe la configuración primero.");
+            return;
+        }
+        try{
+            automataConfigurable.cargarConfiguracion(texto);
+            txtAreaContenido.setText("");
+            mostrarAlerta("ÉXITO", "Configuracion cargada de manera exitosa en memoria");
+        }catch (Exception exception){
+            mostrarAlerta("Error de Formato", "Hubo un error al leer la matriz. Revisa los espacios y los numeros.");
+        }
     }
 
     @FXML
