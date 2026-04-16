@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -58,34 +60,35 @@ public class InicioController implements Initializable {
     private TextArea txtAreaResultado;
 
     private File archivoAbierto;
-
     private AutomataConfigurable automataConfigurable = new AutomataConfigurable();
+    private final Map<String, String[]> infoAutomatas = new HashMap<>();
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         configurarBotones(false);
         idCargarAuto.setDisable(true);
 
+        infoAutomatas.put("1. CEROS v1 ", new String[]{"AFD - Patrón Binario Ceros", "Automata que valida si la cadena empieza y termina con 00, su alfabeto es {0,1}"});
+        infoAutomatas.put("2. AA v3", new String[]{"AFD - SUBCADENA 'aa'", "Automata que valida si en la cadena se encuentra la subcadena 'aa', su alfabeto es {a,b}"});
+        infoAutomatas.put("3. ID v1", new String[]{"Identificadores de Variables", "Automata que valida que la variable empiece por letras, su alfabeto es {letras,digitos}"});
+        infoAutomatas.put("3. ID v3", new String[]{"Identificadores de Variables", "Automata que valida que la variable empiece por letras, su alfabeto es {letras,digitos}"});
+        infoAutomatas.put("4. CEROS v3", new String[]{"AFD - Patrón Binario Ceros", "Automata que valida si la cadena empieza y termina con 00, su alfabeto es {0,1}"});
+        infoAutomatas.put("5. EXP REG", new String[]{"EXPRESION REGULAR (0 * 1 | 1 *)01", "Automata que valida si las cadenas son aceptadas por la expresion regular (0 * 1 | 1 *)01, su alfabeto es {0,1}"});
+        infoAutomatas.put("6. NOTA CIENT", new String[]{"NOTACION CIENTIFICA", "Automata que valida expresiones de notacion cientifica, su alfabeto es {digito, . , e, +, -}"});
+        infoAutomatas.put("7. AB AUTO", new String[]{"AUTOMATA CON ARCHIVO AUTOCONFIGURABLE", "Este automata es un motor dinamico para la creacion de cualquier automata gracias a sus estados, columnas y alfabeto"});
+
         grupoAFD.selectedToggleProperty().addListener((observable, viejoToggle, nuevoToggle) -> {
             if (nuevoToggle != null) {
                 ToggleButton botonSeleccionado = (ToggleButton) nuevoToggle;
-                if(botonSeleccionado.getText().equals("1. CEROS v1 ") || botonSeleccionado.getText().equals("4. CEROS v3")) {
-                    mostrarAlerta("AFD - Patrón Binario Ceros","Automata que valida si la cadena empieza y termina con 00, su alfabeto es {0,1}");
-                }else if(botonSeleccionado.getText().equals("2. AA v3")) {
-                    mostrarAlerta("AFD - SUBCADENA 'aa'","Automata que valida si en la cadena se encuentra la subcadena 'aa', su alfabeto es {a,b}");
-                }else if(botonSeleccionado.getText().equals("3. ID v1") || botonSeleccionado.getText().equals("3. ID v3")) {
-                    mostrarAlerta("Identificadores de Variables","Automata que valida que la variable empiece por letras, su alfabeto es {letras,digitos}");
-                }else if(botonSeleccionado.getText().equals("5. EXP REG")) {
-                    mostrarAlerta("EXPRESION REGULAR (0 * 1 | 1 *)01","Automata que valida si las cadenas son aceptadas por la expresion regular (0 * 1 | 1 *)01, su alfabeto es {0,1}");
-                }else if(botonSeleccionado.getText().equals("6. NOTA CIENT")) {
-                    mostrarAlerta("NOTACION CIENTIFICA","Automata que valida expresiones de notacion cientifica, su alfabeto es {digito, . , e, +, -}");
-                }else if(botonSeleccionado.getText().equals("7. AB AUTO")) {
-                    mostrarAlerta("AUTOMATA CON ARCHIVO AUTOCONFIGURABLE","Este automata es un motor dinamico para la creacion de cualquier automata gracias a sus estados, columnas y alfabeto");
+                String textoBoton = botonSeleccionado.getText();
+
+                if (infoAutomatas.containsKey(textoBoton)) {
+                    String[] info = infoAutomatas.get(textoBoton);
+                    mostrarAlerta(info[0], info[1]);
                 }
 
-                if (!botonSeleccionado.getText().equals("AB AUTO")) {
-                    idCargarAuto.setDisable(true);
-                }
+                idCargarAuto.setDisable(!textoBoton.equals("7. AB AUTO"));
             }
         });
     }
