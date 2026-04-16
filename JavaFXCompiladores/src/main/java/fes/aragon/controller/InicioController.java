@@ -69,6 +69,20 @@ public class InicioController implements Initializable {
         grupoAFD.selectedToggleProperty().addListener((observable, viejoToggle, nuevoToggle) -> {
             if (nuevoToggle != null) {
                 ToggleButton botonSeleccionado = (ToggleButton) nuevoToggle;
+                if(botonSeleccionado.getText().equals("1. CEROS v1 ") || botonSeleccionado.getText().equals("4. CEROS v3")) {
+                    mostrarAlerta("AFD - Patrón Binario Ceros","Automata que valida si la cadena empieza y termina con 00, su alfabeto es {0,1}");
+                }else if(botonSeleccionado.getText().equals("2. AA v3")) {
+                    mostrarAlerta("AFD - SUBCADENA 'aa'","Automata que valida si en la cadena se encuentra la subcadena 'aa', su alfabeto es {a,b}");
+                }else if(botonSeleccionado.getText().equals("3. ID v1") || botonSeleccionado.getText().equals("3. ID v3")) {
+                    mostrarAlerta("Identificadores de Variables","Automata que valida que la variable empiece por letras, su alfabeto es {letras,digitos}");
+                }else if(botonSeleccionado.getText().equals("5. EXP REG")) {
+                    mostrarAlerta("EXPRESION REGULAR (0 * 1 | 1 *)01","Automata que valida si las cadenas son aceptadas por la expresion regular (0 * 1 | 1 *)01, su alfabeto es {0,1}");
+                }else if(botonSeleccionado.getText().equals("6. NOTA CIENT")) {
+                    mostrarAlerta("NOTACION CIENTIFICA","Automata que valida expresiones de notacion cientifica, su alfabeto es {digito, . , e, +, -}");
+                }else if(botonSeleccionado.getText().equals("7. AB AUTO")) {
+                    mostrarAlerta("AUTOMATA CON ARCHIVO AUTOCONFIGURABLE","Este automata es un motor dinamico para la creacion de cualquier automata gracias a sus estados, columnas y alfabeto");
+                }
+
                 if (!botonSeleccionado.getText().equals("AB AUTO")) {
                     idCargarAuto.setDisable(true);
                 }
@@ -103,28 +117,28 @@ public class InicioController implements Initializable {
             if (!palabra.trim().isEmpty()){
                 try{
                     switch (tipoValidacion){
-                        case "CEROS v1":
+                        case "1. CEROS v1 ":
                             identificadorCerosV1(palabra);
                             break;
-                        case "AA v3":
+                        case "2. AA v3":
                             identificadorSubcadenaAA(palabra);
                             break;
-                        case "ID v1":
+                        case "3. ID v1":
                             identificadorVariablesV1(palabra);
                             break;
-                        case "ID v3":
+                        case "3. ID v3":
                             identificadorVariablesV3(palabra);
                             break;
-                        case "CEROS v3":
+                        case "4. CEROS v3":
                             identificadorCerosV3(palabra);
                             break;
-                        case "EXP REG":
+                        case "5. EXP REG":
                             identificadorExpresionRegularV2(palabra);
                             break;
-                        case "NOTA CIENT.":
+                        case "6.NOTA CIENT":
                             identificadorNotacionCientifica(palabra);
                             break;
-                        case "AB AUTO":
+                        case "7. AB AUTO":
                             identificadorAutoconfigurable(palabra);
                             break;
                         default:
@@ -190,11 +204,31 @@ public class InicioController implements Initializable {
 
         mostrarAlerta(
                 "Instrucciones Autoconfigurable",
-                "Formato de la Matriz de Transiciones:\n\n" +
-                        "Fila 1: [Núm. Estados],[Núm. Columnas]\n" +
-                        "Fila 2: [Alfabeto separado por comas, ej: a,b,er]\n" +
-                        "Fila 3 en adelante: [Estado Destino 1],[Estado Destino 2],[Es Final? 0 o 1]\n\n" +
-                        "Una vez escrito, presiona el botón 'Cargar Config.' para guardarlo en memoria."
+                "Formato de la Matriz de Transiciones:\n" +
+                        "Fila 1: [Núm. Estados o fila],[Núm. Columnas]\n" +
+                        "Fila 2: [Alfabeto separado por comas, ej: a,b]\n" +
+                        "Fila 3 en adelante - ESTADO n: [Estado Destino 1],[Estado Destino 2], . . . ,[Estado Destino n],[Es Final? 0 o 1]\n\n" +
+
+                        "EJEMPLO:\n" +
+                        "alfabeto:a,b\n" +
+                        "expresion regular:(a|b)*abb\n" +
+                        "numero de estados: 5\n\n" +
+
+                        "EJEMPLO DE FORMATO:\n" +
+                        "5,2\n" +
+                        "a,b\n" +
+                        "1,2,0\n" +
+                        "1,3,0\n" +
+                        "1,2,0\n" +
+                        "1,4,0\n" +
+                        "1,2,1\n\n" +
+
+                        "NOTAS:\n" +
+                        "1. Una vez escrito, presiona el botón 'Cargar Config.' para guardarlo en memoria\n" +
+                        "2. El numero de columnas depende solamente del alfabeto, no se tenga en cuenta el fin de cadena.\n" +
+                        "3. Dentro del alfabeto no se declara el fin de cadena, tampoco a la hora de definir las columnas\n" +
+                        "4. El archivo del ejemplo de formato se encuentra en la ruta ya indicada en el menu de automatas\n"
+
         );
     }
 

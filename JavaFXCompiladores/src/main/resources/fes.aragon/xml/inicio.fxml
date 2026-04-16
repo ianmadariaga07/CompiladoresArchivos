@@ -43,13 +43,13 @@
                </font>
             </Label>
             <Label fx:id="lblNota" layoutX="14.0" layoutY="43.0" prefHeight="18.0" prefWidth="575.0" style="-fx-text-fill: #A1A6BA;" text="NOTA: Solamente se admiten archivos con las siguientes extensiones: .txt, .java, .cpp, .c, .xml" />
-            <Label layoutX="14.0" layoutY="100.0" prefHeight="20.0" prefWidth="559.0" style="-fx-text-fill: #A1A6BA;" text="⚠️ Importante: Debes seleccionar un tipo de autómata (AFD) antes de validar.">
+            <Label layoutX="9.0" layoutY="124.0" prefHeight="20.0" prefWidth="559.0" style="-fx-text-fill: #A1A6BA;" text="⚠️ Importante: Debes seleccionar un tipo de autómata (AFD) antes de validar.">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
             <Label fx:id="lblNota1" layoutX="14.0" layoutY="61.0" prefHeight="18.0" prefWidth="575.0" style="-fx-text-fill: #A1A6BA;" text="NOTA: Si el área de entrada está vacía, la validación no se ejecutará." />
-            <ToggleButton layoutX="141.0" layoutY="144.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="120.0" stylesheets="@../css/style.css" text="AA v3">
+            <ToggleButton layoutX="141.0" layoutY="144.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="120.0" stylesheets="@../css/style.css" text="2. AA v3">
                <font>
                   <Font size="14.0" />
                </font>
@@ -57,27 +57,27 @@
                   <ToggleGroup fx:id="grupoAFD" />
                </toggleGroup>
             </ToggleButton>
-            <ToggleButton layoutX="9.0" layoutY="144.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="120.0" stylesheets="@../css/style.css" text="CEROS v1" toggleGroup="$grupoAFD">
+            <ToggleButton layoutX="9.0" layoutY="144.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="120.0" stylesheets="@../css/style.css" text="1. CEROS v1 " toggleGroup="$grupoAFD">
                <font>
                   <Font size="14.0" />
                </font>
             </ToggleButton>
-            <ToggleButton layoutX="540.0" layoutY="144.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="120.0" stylesheets="@../css/style.css" text="CEROS v3" toggleGroup="$grupoAFD">
+            <ToggleButton layoutX="540.0" layoutY="144.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="120.0" stylesheets="@../css/style.css" text="4. CEROS v3" toggleGroup="$grupoAFD">
                <font>
                   <Font size="14.0" />
                </font>
             </ToggleButton>
-            <ToggleButton layoutX="274.0" layoutY="144.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="120.0" stylesheets="@../css/style.css" text="ID v1" toggleGroup="$grupoAFD">
+            <ToggleButton layoutX="274.0" layoutY="144.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="120.0" stylesheets="@../css/style.css" text="3. ID v1" toggleGroup="$grupoAFD">
                <font>
                   <Font size="14.0" />
                </font>
             </ToggleButton>
-            <ToggleButton layoutX="406.0" layoutY="144.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="120.0" stylesheets="@../css/style.css" text="ID v3" toggleGroup="$grupoAFD">
+            <ToggleButton layoutX="406.0" layoutY="144.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="120.0" stylesheets="@../css/style.css" text="3. ID v3" toggleGroup="$grupoAFD">
                <font>
                   <Font size="14.0" />
                </font>
             </ToggleButton>
-            <ToggleButton layoutX="673.0" layoutY="144.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="120.0" stylesheets="@../css/style.css" text="EXP REG" toggleGroup="$grupoAFD">
+            <ToggleButton layoutX="673.0" layoutY="144.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="120.0" stylesheets="@../css/style.css" text="5. EXP REG" toggleGroup="$grupoAFD">
                <font>
                   <Font size="14.0" />
                </font>
@@ -87,12 +87,12 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <ToggleButton layoutX="805.0" layoutY="144.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="120.0" stylesheets="@../css/style.css" text="NOTA CIENT." toggleGroup="$grupoAFD">
+            <ToggleButton layoutX="805.0" layoutY="144.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="120.0" stylesheets="@../css/style.css" text="6. NOTA CIENT" toggleGroup="$grupoAFD">
                <font>
                   <Font size="14.0" />
                </font>
             </ToggleButton>
-            <ToggleButton layoutX="936.0" layoutY="144.0" mnemonicParsing="false" onAction="#accionSeleccionarAutoconfi" prefHeight="43.0" prefWidth="120.0" stylesheets="@../css/style.css" text="AB AUTO" toggleGroup="$grupoAFD">
+            <ToggleButton layoutX="936.0" layoutY="144.0" mnemonicParsing="false" onAction="#accionSeleccionarAutoconfi" prefHeight="43.0" prefWidth="120.0" stylesheets="@../css/style.css" text="7. AB AUTO" toggleGroup="$grupoAFD">
                <font>
                   <Font size="14.0" />
                </font>
@@ -102,6 +102,17 @@
                   <Font size="24.0" />
                </font>
             </Button>
+            <Label fx:id="lblNota11" layoutX="14.0" layoutY="98.0" prefHeight="21.0" prefWidth="731.0" style="-fx-text-fill: #A1A6BA;" text="NOTA: Exiten archivos txt para probar cada automatas, estos se encuentran en la siguiente ruta:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblNota111" layoutX="701.0" layoutY="96.0" prefHeight="25.0" prefWidth="328.0" style="-fx-text-fill: #A1A6BA;" text="src/main/resources/fes.aragon/textos">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblNota13" layoutX="14.0" layoutY="76.0" prefHeight="18.0" prefWidth="575.0" style="-fx-text-fill: #A1A6BA;" text="NOTA: Para mas informacion sobre cada automata presiona un boton." />
          </children>
       </AnchorPane>
    </top>
