@@ -102,17 +102,18 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Label fx:id="lblNota11" layoutX="14.0" layoutY="98.0" prefHeight="21.0" prefWidth="731.0" style="-fx-text-fill: #A1A6BA;" text="NOTA: Exiten archivos txt para probar cada automatas, estos se encuentran en la siguiente ruta:">
+            <Label fx:id="lblNota11" layoutX="9.0" layoutY="111.0" prefHeight="21.0" prefWidth="731.0" style="-fx-text-fill: #A1A6BA;" text="NOTA: Exiten archivos txt para probar cada automatas, estos se encuentran en la siguiente ruta:">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="lblNota111" layoutX="701.0" layoutY="96.0" prefHeight="25.0" prefWidth="328.0" style="-fx-text-fill: #A1A6BA;" text="src/main/resources/fes.aragon/textos">
+            <Label fx:id="lblNota111" layoutX="701.0" layoutY="109.0" prefHeight="25.0" prefWidth="328.0" style="-fx-text-fill: #A1A6BA;" text="src/main/resources/fes.aragon/textos">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
             <Label fx:id="lblNota13" layoutX="14.0" layoutY="76.0" prefHeight="18.0" prefWidth="575.0" style="-fx-text-fill: #A1A6BA;" text="NOTA: Para mas informacion sobre cada automata presiona un boton." />
+            <Label fx:id="lblNota131" layoutX="14.0" layoutY="91.0" prefHeight="18.0" prefWidth="575.0" style="-fx-text-fill: #A1A6BA;" text="NOTA: Para abrir un nuevo archivo no olvides quitar el que tienes abierto." />
          </children>
       </AnchorPane>
    </top>

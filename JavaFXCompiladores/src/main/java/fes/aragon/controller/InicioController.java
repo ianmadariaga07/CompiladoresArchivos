@@ -138,7 +138,7 @@ public class InicioController implements Initializable {
                         case "5. EXP REG":
                             identificadorExpresionRegularV2(palabra);
                             break;
-                        case "6.NOTA CIENT":
+                        case "6. NOTA CIENT":
                             identificadorNotacionCientifica(palabra);
                             break;
                         case "7. AB AUTO":
