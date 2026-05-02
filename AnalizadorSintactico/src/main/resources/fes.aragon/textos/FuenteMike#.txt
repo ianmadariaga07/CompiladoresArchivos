@@ -1,0 +1,18 @@
+inicio
+  entero contador , limite ;
+  real promedio ;
+
+  contador := 0 ;
+  limite := 10 ;
+
+  mientras ( contador <= limite )
+    si ( contador != 5 )
+      promedio := promedio + 1.5 ;
+    sino
+      promedio := promedio * 2 ;
+
+    contador := contador + 1 ;
+  finmientras
+
+  @
+fin

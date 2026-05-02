@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToggleGroup?>
@@ -57,7 +59,7 @@
                   <ToggleGroup fx:id="grupoAFD" />
                </toggleGroup>
             </ToggleButton>
-            <ToggleButton layoutX="9.0" layoutY="144.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="120.0" stylesheets="@../css/style.css" text="1. CEROS v1 " toggleGroup="$grupoAFD">
+            <ToggleButton layoutX="9.0" layoutY="144.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="120.0" stylesheets="@../css/style.css" text="1. MIKE#" toggleGroup="$grupoAFD">
                <font>
                   <Font size="14.0" />
                </font>
@@ -97,11 +99,6 @@
                   <Font size="14.0" />
                </font>
             </ToggleButton>
-            <Button fx:id="idCargarAuto" disable="true" layoutX="1074.0" layoutY="21.0" mnemonicParsing="false" onAction="#accionCargarAuto" prefHeight="45.0" prefWidth="190.0" styleClass="btn-validar" stylesheets="@../css/style.css" text="CARGAR AUTO">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Button>
             <Label fx:id="lblNota11" layoutX="9.0" layoutY="111.0" prefHeight="21.0" prefWidth="731.0" style="-fx-text-fill: #A1A6BA;" text="NOTA: Exiten archivos txt para probar cada automatas, estos se encuentran en la siguiente ruta:">
                <font>
                   <Font size="15.0" />
@@ -142,6 +139,14 @@
                   <Font size="17.0" />
                </font>
             </Label>
+            <TableView fx:id="tablaTokens" layoutX="15.0" layoutY="271.0" prefHeight="522.0" prefWidth="1106.0" style="-fx-background-color: #454A5E; -fx-control-inner-background: #454A5E; -fx-text-fill: #F0F1F4;">
+              <columns>
+                <TableColumn fx:id="colToken" prefWidth="393.0" text="TOKEN" />
+                <TableColumn fx:id="colLexema" minWidth="0.0" prefWidth="480.0" text="LEXEMA" />
+                  <TableColumn fx:id="colLinea" minWidth="0.0" prefWidth="117.0" text="LINEA" />
+                  <TableColumn fx:id="colColumna" minWidth="0.0" prefWidth="115.0" text="COLUMNA" />
+              </columns>
+            </TableView>
          </children>
       </AnchorPane>
    </center>

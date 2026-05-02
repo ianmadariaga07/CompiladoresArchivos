@@ -1,0 +1,52 @@
+package fes.aragon.modelo;
+
+%%
+%class Lexico
+%line
+%column
+%type Tokens
+
+L=[a-zA-Z]
+D=[0-9]
+espacio=[ \t\r\n]+
+
+%{
+    public String lexema;
+    public int getYyline(){
+        return yyline+1;
+    }
+    public int getYycolumn(){
+        return yycolumn;
+    }
+%}
+
+%%
+{espacio} {/* Ignora los espacios en blanco, saltos de linea y tabuladores */}
+
+/* Palabras Reservadas */
+"inicio"             { lexema=yytext(); return Tokens.INICIO; }
+"fin"                { lexema=yytext(); return Tokens.FIN; }
+"entero"             { lexema=yytext(); return Tokens.ENTERO; }
+"real"               { lexema=yytext(); return Tokens.REAL; }
+"mientras"           { lexema=yytext(); return Tokens.MIENTRAS; }
+"finmientras"        { lexema=yytext(); return Tokens.FINMIENTRAS; }
+"si"                 { lexema=yytext(); return Tokens.SI; }
+"sino"               { lexema=yytext(); return Tokens.SINO; }
+
+/* Operadores y Símbolos de Puntuación */
+":="                 { lexema=yytext(); return Tokens.ASIGNACION; }
+";"                  { lexema=yytext(); return Tokens.PUNTO_COMA; }
+","                  { lexema=yytext(); return Tokens.COMA; }
+"("                  { lexema=yytext(); return Tokens.PARENTESIS_A; }
+")"                  { lexema=yytext(); return Tokens.PARENTESIS_C; }
+
+/* Operadores Aritméticos y Relacionales agrupados */
+"+"|"*"|"-"|"/"      { lexema=yytext(); return Tokens.OPERADOR_ARITMETICO; }
+"="|"!="|">="|"<="|"<"|">" { lexema=yytext(); return Tokens.COMPARACION; }
+
+/* Expresiones Regulares Complejas */
+{L}({L}|{D}){0,14}   { lexema=yytext(); return Tokens.IDENTIFICADOR; }
+{D}+("."{D}+)?       { lexema=yytext(); return Tokens.NUMERO; }
+
+/* Manejo de Errores */
+.                    { lexema=yytext(); return Tokens.ERROR; }
