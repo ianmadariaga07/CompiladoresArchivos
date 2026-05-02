@@ -60,13 +60,6 @@ public class InicioController implements Initializable {
         tablaTokens.setVisible(false);
 
         infoAutomatas.put("1. MIKE#", new String[]{"Analizador Léxico Mike#", "Desglosa el código fuente en tokens."});
-
-        grupoAFD.selectedToggleProperty().addListener((observable, viejoToggle, nuevoToggle) -> {
-            if (nuevoToggle != null) {
-                ToggleButton botonSeleccionado = (ToggleButton) nuevoToggle;
-                String textoBoton = botonSeleccionado.getText();
-            }
-        });
     }
 
     @FXML
@@ -153,57 +146,6 @@ public class InicioController implements Initializable {
         } while (resultado != null);
 
         tablaTokens.setItems(listaTokens);
-    }
-
-    @FXML
-    void accionSeleccionarAutoconfi(ActionEvent event) {
-        idCargarAuto.setDisable(false);
-
-        mostrarAlerta(
-                "Instrucciones Autoconfigurable",
-                "Formato de la Matriz de Transiciones:\n" +
-                        "Fila 1: [Núm. Estados o fila],[Núm. Columnas]\n" +
-                        "Fila 2: [Alfabeto separado por comas, ej: a,b]\n" +
-                        "Fila 3 en adelante - ESTADO n: [Estado Destino 1],[Estado Destino 2], . . . ,[Estado Destino n],[Es Final? 0 o 1]\n\n" +
-
-                        "EJEMPLO:\n" +
-                        "alfabeto:a,b\n" +
-                        "expresion regular:(a|b)*abb\n" +
-                        "numero de estados: 5\n\n" +
-
-                        "EJEMPLO DE FORMATO:\n" +
-                        "5,2\n" +
-                        "a,b\n" +
-                        "1,2,0\n" +
-                        "1,3,0\n" +
-                        "1,2,0\n" +
-                        "1,4,0\n" +
-                        "1,2,1\n\n" +
-
-                        "NOTAS:\n" +
-                        "1. Una vez escrito, presiona el botón 'Cargar Config.' para guardarlo en memoria\n" +
-                        "2. El numero de columnas depende solamente del alfabeto, no se tenga en cuenta el fin de cadena.\n" +
-                        "3. Dentro del alfabeto no se declara el fin de cadena, tampoco a la hora de definir las columnas\n" +
-                        "4. El archivo del ejemplo de formato se encuentra en la ruta ya indicada en el menu de automatas\n"
-
-        );
-    }
-
-    @FXML
-    void accionCargarAuto(ActionEvent event){
-        String texto = txtAreaContenido.getText();
-
-        if(texto == null || texto.trim().isEmpty()){
-            mostrarAlerta("Aviso", "No hay texto para cargar. Escribe la configuración primero.");
-            return;
-        }
-        try{
-            automataConfigurable.cargarConfiguracion(texto);
-            txtAreaContenido.setText("");
-            mostrarAlerta("ÉXITO", "Configuracion cargada de manera exitosa en memoria");
-        }catch (Exception exception){
-            mostrarAlerta("Error de Formato", "Hubo un error al leer la matriz. Revisa los espacios y los numeros.");
-        }
     }
 
     @FXML
